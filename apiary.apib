@@ -1,0 +1,112 @@
+FORMAT: 1A
+HOST: http://iic3103api.apiblueprint.org/
+
+
+
+
+# iic3103.api
+
+## Objectivo General
+
+El objetivo general de esta tarea es que el alumno sea capaz de construir una API REST que pueda ser utilizada por terceros.
+
+
+## Objetivos Especificos
+Crear una API REST simple.
+Entender los conceptos básicos de REST y sus implicancias.
+Comprender las diferencias entre las distintas operaciones http.
+
+## Trabajo realizado
+
+IIC3103-API is a simple API for delivery URI CRUD-based services for users.
+
+## Lista de Usuarios [/users]
+
+### List All Users [GET]
+
++ Response 200 (application/json)
+
+        {
+          "usuarios": [
+            {
+              "id": 1,
+              "nombre": "Juan",
+              "apellido": "Pérez",
+              "usuario": "jperez",
+              "twitter": "jperez1990"
+            },
+            {
+              "id": 2,
+              "nombre": "María",
+              "apellido": null,
+              "usuario": "maria",
+              "twitter": ""
+            }
+          ],
+          "total": 2
+        }
+        
+
+## Message [/usuario/{id}]
+
+### Obtener Usuario [GET]
+
+Obtener usuario por del id.
+
++ Parameters
+    + id (number) - Identificador del usuario
+
++ Request (application/json)
+    + body 
+        {
+            "id": "1"
+        }
+    
++ Response 200 (application/json)
+    {
+      "id": 1,
+      "nombre": "Juan",
+      "apellido": "Pérez",
+      "usuario": "jperez",
+      "twitter": "jperez1990"
+    }
+    
+### Remover Usuario [DELETE]
+
+Remover usuario
+
++ response 204
+
+
+
+### Crear Nuevo Usuario [POST]
+
+Permite crear un nuevo usuario en el sistema.
+
+El valor de id se setea automáticamente al crear.
+ 
+
++ Request (application/json)
+    {
+      "nombre": "Juan",
+      "apellido": "Pérez",
+      "usuario": "jperez",
+      "twitter": "jperez1990"
+    }
+    
++ Response 201 (application/json)
+
+    {
+      "id": 1,
+      "nombre": "Juan",
+      "apellido": "Pérez",
+      "usuario": "jperez",
+      "twitter": "jperez1990"
+    }
+
+    
++ Response 400 (application/json)
+
+    {
+      "error": "No se puede crear usuario con id"
+    }
